@@ -1,0 +1,6 @@
+16:20:58.169 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+16:20:58.180 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+16:20:58.181 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.124.75:8545
+16:20:59.754 [main] INFO  c.i.d.w.EthcoinAPI - 响应结果：0xf44c1821bb9564cacc224e6440ad710cff7b651c
+16:20:59.754 [main] INFO  c.i.d.w.EthcoinAPI - 0xf44c1821bb9564cacc224e6440ad710cff7b651c
+16:20:59.754 [main] INFO  c.i.d.w.EthcoinAPI - 0xf44c1821bb9564cacc224e6440ad710cff7b651c

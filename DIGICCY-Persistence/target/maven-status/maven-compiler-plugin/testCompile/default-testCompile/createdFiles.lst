@@ -1,0 +1,4 @@
+com\inesv\digiccy\test\BaseJunit4Test.class
+com\inesv\digiccy\test\InitAxonTables.class
+com\inesv\digiccy\test\TestDataSource.class
+com\inesv\digiccy\test\test.class

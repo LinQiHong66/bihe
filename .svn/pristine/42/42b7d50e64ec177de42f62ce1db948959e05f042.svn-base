@@ -1,0 +1,58 @@
+package com.inesv.digiccy.persistence.finance;
+
+import com.inesv.digiccy.dto.FicWithdrawDto;
+import org.apache.commons.dbutils.QueryRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
+
+/**
+ * Created by Administrator on 2016/12/6 0006.
+ */
+@Component
+public class FicWithdrawPersistence {
+    private static Logger logger = LoggerFactory.getLogger(FicWithdrawPersistence.class);
+
+    @Autowired
+    QueryRunner queryRunner;
+
+    /**
+     *虚拟币提现审核
+     */
+    public int updateStateWithdrawInfo(FicWithdrawDto ficWithdrawDto){
+        String sql = "UPDATE t_inesv_fic_withdraw SET actual_price=?,sate=? WHERE id = ?";
+        Object parmas[] = {ficWithdrawDto.getActual_price(),ficWithdrawDto.getSate(),ficWithdrawDto.getId()};
+        try {
+            int i = queryRunner.update(sql,parmas);
+            return i;
+        } catch (SQLException e) {
+            e.printStackTrace();
+          
+        }
+        return 0;
+    }
+
+    
+    /**
+     *新增虚拟币提现记录
+     */
+    public int insertWithdrawInfo(FicWithdrawDto ficWithdrawDto){
+        String sql = "insert into t_inesv_fic_withdraw(user_no,coin_no,coin_sum,address,poundage,actual_price,sate,date) VALUES (?,?,?,?,?,?,?,?)";
+        Object parmas[] = {ficWithdrawDto.getUser_no(),ficWithdrawDto.getCoin_no(),ficWithdrawDto.getCoin_sum(),ficWithdrawDto.getAddress(),
+                ficWithdrawDto.getPoundage(),ficWithdrawDto.getActual_price(),ficWithdrawDto.getSate(),ficWithdrawDto.getDate()};
+        try {
+            int i = queryRunner.update(sql,parmas);
+            return i;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            logger.error("新增虚拟币提现记录失败");
+        }
+        return 0;
+    }
+
+
+
+}

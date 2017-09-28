@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="digiccy-trade-mission">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="digiccy-trade-regular-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-regular/digiccy-trade-regular">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digiccy-trade-api-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-api/digiccy-trade-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digiccy-trade-persistence-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-persistence/digiccy-trade-persistence">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digiccy-trade-component-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-component/digiccy-trade-component">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digiccy-trade-service-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-service/digiccy-trade-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digiccy-trade-query-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/digiccy-trade-query/digiccy-trade-query">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="digiccy-trade-mission"/>
+        <property name="java-output-path" value="/digiccy-trade-mission/target/classes"/>
+    </wb-module>
+</project-modules>

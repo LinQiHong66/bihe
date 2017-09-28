@@ -1,0 +1,71 @@
+package com.inesv.digiccy.persistence.finance;
+
+import com.inesv.digiccy.dto.RmbWithdrawDto;
+import org.apache.commons.dbutils.QueryRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
+
+/**
+ * 用户提现记录增删改
+ */
+@Component
+public class RmbWithdrawPersistence {
+
+
+    @Autowired
+    QueryRunner queryRunner;
+
+    /**
+     *新增提现记录
+     *
+     */
+    @Transactional
+    public void addWithdrawInfo(RmbWithdrawDto rmbWithdrawDto){
+
+        String sql = "INSERT INTO t_inesv_rmb_withdraw(user_no,bank,price,poundage,actual_price,date,state)VALUES(?,?,?,?,?,?,?)";
+        
+        /*  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+        /*Object parmas[] = {rmbWithdrawDto.getUser_no(),rmbWithdrawDto.getBank(),rmbWithdrawDto.getPrice(),rmbWithdrawDto.getPoundage(),
+                rmbWithdrawDto.getActual_price(),rmbWithdrawDto.getDate(),rmbWithdrawDto.getState()};
+        */
+        Object parmas[] = {rmbWithdrawDto.getUser_no(),rmbWithdrawDto.getBank(),rmbWithdrawDto.getPrice(),rmbWithdrawDto.getPoundage(),
+                rmbWithdrawDto.getActual_price(),rmbWithdrawDto.getDate(),0};  //状态为未处理
+        /*  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+        
+        try {
+            queryRunner.update(sql,parmas);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 确认人民币提现到账
+     */
+    @Transactional
+    public void confirmToAccount(int recordId,int user,String price){
+    	System.out.println("**********************************************price  :" + price);
+        try {
+
+            String updateState = "UPDATE t_inesv_rmb_withdraw SET state = 1 ,actual_price=price-poundage WHERE  id=?  ";
+            Object stateParam[] = {recordId};
+
+            queryRunner.update(updateState, stateParam);
+            String updateBalance = "UPDATE t_inesv_user_balance SET unable_coin = unable_coin-?,total_price = total_price-? " +
+                    "WHERE user_no = ? and coin_type = 0 ";
+            Object balanceParam[] = {price, price, user};
+            queryRunner.update(updateBalance, balanceParam);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+}

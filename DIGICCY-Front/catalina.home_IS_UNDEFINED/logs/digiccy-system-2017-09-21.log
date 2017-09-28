@@ -1,0 +1,72 @@
+19:46:26.930 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:46:26.943 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:46:26.943 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:46:27.441 [main] INFO  c.i.d.w.EthcoinAPI - Coudln't connet to Bitcoind!
+19:46:27.442 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:46:27.443 [main] INFO  c.i.d.w.EthcoinAPI - 
+19:47:06.277 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:47:06.280 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:47:06.281 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:47:06.622 [main] INFO  c.i.d.w.EthcoinAPI - Coudln't connet to Bitcoind!
+19:47:06.623 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:47:06.623 [main] INFO  c.i.d.w.EthcoinAPI - 
+19:50:25.538 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:50:25.541 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:50:25.541 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:50:26.012 [main] INFO  c.i.d.w.EthcoinAPI - Coudln't connet to Bitcoind!
+19:50:26.014 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:50:26.015 [main] INFO  c.i.d.w.EthcoinAPI - 
+19:51:21.519 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:51:21.522 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:51:21.523 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:51:21.871 [main] INFO  c.i.d.w.EthcoinAPI - Coudln't connet to Bitcoind!
+19:51:21.873 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:51:21.873 [main] INFO  c.i.d.w.EthcoinAPI - 
+19:53:28.378 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:53:28.381 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:53:28.382 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:53:28.800 [main] INFO  c.i.d.w.EthcoinAPI - Coudln't connet to Bitcoind!
+19:53:28.801 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:53:28.802 [main] INFO  c.i.d.w.EthcoinAPI - 
+19:58:36.811 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+19:58:36.814 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+19:58:36.814 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:9332
+19:58:42.847 [main] INFO  c.i.d.w.EthcoinAPI - connection error
+19:58:48.848 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+19:58:48.848 [main] INFO  c.i.d.w.EthcoinAPI - 
+20:00:31.438 [main] INFO  c.i.d.w.EthcoinAPI - 123456789
+20:00:31.443 [main] INFO  c.i.d.w.EthcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"personal_newAccount","params":["123456789"]}
+20:00:31.444 [main] INFO  c.i.d.w.EthcoinAPI - 请求url:---------http://35.200.52.195:8332
+20:00:37.489 [main] INFO  c.i.d.w.EthcoinAPI - connection error
+20:00:43.490 [main] INFO  c.i.d.w.EthcoinAPI - Couldn't get a decent answer
+20:00:43.490 [main] INFO  c.i.d.w.EthcoinAPI - 
+20:08:22.379 [main] INFO  c.i.d.w.BitcoinAPI - linqihong
+20:08:22.394 [main] INFO  c.i.d.w.BitcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"getnewaddress","params":["linqihong"]}
+20:08:22.394 [main] INFO  c.i.d.w.BitcoinAPI - 请求url:---------http://35.200.52.195:8332
+20:08:28.427 [main] INFO  c.i.d.w.BitcoinAPI - connection error
+20:08:34.428 [main] INFO  c.i.d.w.BitcoinAPI - Couldn't get a decent answer
+20:08:34.428 [main] INFO  c.i.d.w.BitcoinAPI - 
+20:10:42.965 [main] INFO  c.i.d.w.BitcoinAPI - linqihong
+20:10:42.968 [main] INFO  c.i.d.w.BitcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"getnewaddress","params":["linqihong"]}
+20:10:42.969 [main] INFO  c.i.d.w.BitcoinAPI - 请求url:---------http://35.200.52.195:9332
+20:10:49.002 [main] INFO  c.i.d.w.BitcoinAPI - connection error
+20:10:55.004 [main] INFO  c.i.d.w.BitcoinAPI - Couldn't get a decent answer
+20:10:55.005 [main] INFO  c.i.d.w.BitcoinAPI - 
+20:12:10.666 [main] INFO  c.i.d.w.BitcoinAPI - linqihong
+20:12:10.670 [main] INFO  c.i.d.w.BitcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"getnewaddress","params":["linqihong"]}
+20:12:10.670 [main] INFO  c.i.d.w.BitcoinAPI - 请求url:---------http://35.200.52.195:9332
+20:12:11.050 [main] INFO  c.i.d.w.BitcoinAPI - Coudln't connet to Bitcoind!
+20:12:11.051 [main] INFO  c.i.d.w.BitcoinAPI - Couldn't get a decent answer
+20:12:11.052 [main] INFO  c.i.d.w.BitcoinAPI - 
+20:12:25.228 [main] INFO  c.i.d.w.BitcoinAPI - linqihong
+20:12:25.233 [main] INFO  c.i.d.w.BitcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"getnewaddress","params":["linqihong"]}
+20:12:25.233 [main] INFO  c.i.d.w.BitcoinAPI - 请求url:---------http://35.200.52.195:8332
+20:12:25.970 [main] INFO  c.i.d.w.BitcoinAPI - 响应结果：13n7aoD9VZJ2FWdQEimBU5qG1KVYeATRTQ
+20:12:25.970 [main] INFO  c.i.d.w.BitcoinAPI - 13n7aoD9VZJ2FWdQEimBU5qG1KVYeATRTQ
+20:12:25.970 [main] INFO  c.i.d.w.BitcoinAPI - 13n7aoD9VZJ2FWdQEimBU5qG1KVYeATRTQ
+20:13:22.601 [main] INFO  c.i.d.w.BitcoinAPI - linqihong
+20:13:22.604 [main] INFO  c.i.d.w.BitcoinAPI - 请求参数：{"jsonrpc":"1.0","id":"1","method":"getnewaddress","params":["linqihong"]}
+20:13:22.605 [main] INFO  c.i.d.w.BitcoinAPI - 请求url:---------http://35.200.52.195:9332
+20:13:23.134 [main] INFO  c.i.d.w.BitcoinAPI - 响应结果：LRJ3HTPPvB6x8yTrAgorfGFLozZfiTqvim
+20:13:23.135 [main] INFO  c.i.d.w.BitcoinAPI - LRJ3HTPPvB6x8yTrAgorfGFLozZfiTqvim
+20:13:23.135 [main] INFO  c.i.d.w.BitcoinAPI - LRJ3HTPPvB6x8yTrAgorfGFLozZfiTqvim

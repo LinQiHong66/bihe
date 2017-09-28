@@ -1,0 +1,87 @@
+package com.inesv.digiccy.controller;
+
+import com.inesv.digiccy.validata.PlatformPaymentValidata;
+import com.inesv.digiccy.validata.RmbRechargeValidate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
+
+/**
+ * Created by yc on 2016/12/9 0009.
+ * 人民币充值
+ */
+ 
+ 
+@Controller
+@RequestMapping("rmbRecharge")
+public class RmbRechargeController {
+
+    @Autowired
+    RmbRechargeValidate rmbRechargeValidate;
+    
+    @Autowired
+    PlatformPaymentValidata platformPaymentValidata;
+
+    /**
+     *获取平台收款银行账户
+     */
+    @RequestMapping(value = "getPlatfromPayment",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> getPlatfromPayment(){
+        Map<String, Object> map =  platformPaymentValidata.getPlatfromPayment();
+        return map;
+    }
+
+    
+    /**
+     * 获取用户信息 
+     */
+    @RequestMapping(value = "getUserInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> getUserInfo(Long userNo){
+        Map<String, Object> map = rmbRechargeValidate.validateUserInfo(userNo);
+        return map;
+    }
+
+    
+    
+    /**
+     *查询可用人民币及人民币充值记录信息
+     */
+    @RequestMapping(value = "getRmbRechargeInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> getRmbRechargeInfo(int userNo,int coinType){
+        Map<String, Object> map = rmbRechargeValidate.validateRmbRechargeInfo(userNo,coinType);//0为人民币类型
+        return map;
+    }
+
+
+    /**
+     *确认充值
+     */
+    @RequestMapping(value = "goRmbRecharge",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> goRmbRecharge(int userNo,int recType,String recharge_price){
+        if(!recharge_price.equals("") && recharge_price != null){
+            Map<String,Object> map = rmbRechargeValidate.validateGoRmbRecharge(userNo,recType,recharge_price);
+            return map;
+        }
+        return null;
+    }
+
+    /**
+     * 修改用户的人民币充值状态(未付款 or 已付款)
+     */
+    @RequestMapping(value = "updateStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updateStatu(int status,String order){
+        Map<String, Object> map = rmbRechargeValidate.validateUpdateStatu(status,order);
+        return map;
+    }
+
+}

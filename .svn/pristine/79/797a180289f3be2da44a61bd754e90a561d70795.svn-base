@@ -1,0 +1,204 @@
+package com.inesv.digiccy.validata;
+
+import com.inesv.digiccy.common.ResponseCode;
+import com.inesv.digiccy.dto.DealDetailDto;
+import com.inesv.digiccy.dto.EntrustDto;
+import com.inesv.digiccy.persistence.reg.RegUserPersistence;
+import com.inesv.digiccy.query.QueryEntrustDealInfo;
+import com.inesv.digiccy.query.QueryEntrustInfo;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by Administrator on 2016/11/17 0017.
+ */
+@Component
+public class EntrustDealValidate {
+
+    @Autowired
+    QueryEntrustDealInfo queryEntrustDealInfo;
+
+    @Autowired
+    QueryEntrustInfo queryEntrustInfo;
+
+    @Autowired
+    CommandGateway commandGateway;
+
+    @Autowired
+    RegUserPersistence regUserPersistence;
+   
+    /**
+     * 根据用户编号查询委托记录
+     * @return
+     */
+    public Map<String, Object> validataEntrustRecordByUserNo(String userNo) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<EntrustDto> list = queryEntrustInfo.queryEntrustInfoByUserNo(userNo);
+        if (list == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("data", list);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+        }
+        return map;
+    }
+    
+    /**
+     * API根据用户编号查询委托记录
+     * @return
+     */
+    public Map<String, Object> validataEntrustByUserNo(Integer userNo) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+        	List<EntrustDto> list = queryEntrustInfo.queryEntrustInfoByUserNo(userNo);
+            if (list == null) {
+                map.put("code", ResponseCode.FAIL);
+                map.put("desc", ResponseCode.FAIL_DESC);
+            } else {
+                map.put("data", list);
+                map.put("code", ResponseCode.SUCCESS);
+                map.put("desc", ResponseCode.SUCCESS_DESC);
+            }
+		} catch (Exception e) {
+			map.put("code", ResponseCode.FAIL);
+            map.put("desc", "查询用户委托记录失败！");
+		}
+        return map;
+    }
+    
+    /**
+     * 获取分页委托记录
+     */
+    public Map<String, Object> getPagingentrList(int pageNum, int itemCount, int userNo, int coinType){
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	List<EntrustDto> dtos = queryEntrustInfo.queryPagingEntrust(pageNum, itemCount, userNo, coinType);
+    	if(dtos != null){
+            map.put("data", dtos);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+    	}else{
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+    	}
+    	return map;
+    }
+    /**
+     * 委托记录
+     * @return
+     */
+    public Map<String, Object> validataEntrustListByUserNo(String userNo,String dealType,String coinNo) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<DealDetailDto> list = queryEntrustDealInfo.queryEntrustDealInfoByEntrustTypeEntrustCoin(Integer.parseInt(userNo),Integer.parseInt(dealType),Integer.parseInt(coinNo));
+        if (list == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("data", list);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+        }
+        return map;
+    }
+
+    /**
+     * 委托管理记录
+     * @return
+     */
+    public Map<String, Object> validataEntrustManageListByUserNo(String userNo,String entrustType,String entrustCoin,String state) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<EntrustDto> EntrustList = queryEntrustDealInfo.queryEntrustManageInfoByUserNo(Integer.parseInt(userNo),Integer.parseInt(entrustType),Integer.parseInt(entrustCoin),Integer.parseInt(state));
+        if (EntrustList == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("EntrustList", EntrustList);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+
+        }
+        return map;
+    }
+
+    /**
+     *修改委托管理状态
+     */
+    public Map<String,Object> validataUpdateEntrustManage( Long id ){
+        Map<String,Object> map = new HashMap<>();
+        try {
+           
+            regUserPersistence.updateEntrustState2(id);
+            EntrustDto entrust = queryEntrustInfo.queryEntrustInfoByID(id);
+            regUserPersistence.updateBalance(entrust.getUser_no(),entrust.getEntrust_coin(),entrust.getEntrust_num().doubleValue());
+            map.put("msg",100);
+         } catch (Exception e) {
+            e.printStackTrace();
+            map.put("msg",200);
+        }
+        return map;
+    }
+
+    public Map<String,Object> validateQueryEntrustAll(String userName, String state, String startDate, String endDate, Integer pageItem, Integer pageNum){
+        Map<String,Object> map = new HashMap<>();
+        List<EntrustDto> list = queryEntrustInfo.queryEntrustInfoAll();
+        if (list == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("data", list);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+        }
+        return map;
+    }
+    
+    public Map<String,Object> validataUpdateEntrustStateByAttr1( Long attr1 ){
+        Map<String,Object> map = new HashMap<>();
+        try {
+            //EntrustCommand command = new EntrustCommand(id,null,null,null,null,null,null,null,2,new Date(),"updateState2");
+            //commandGateway.sendAndWait(command);
+            regUserPersistence.updateEntrustStateByAttr1(attr1);
+            map.put("msg",100);
+         } catch (Exception e) {
+            e.printStackTrace();
+            map.put("msg",200);
+        }
+        return map;
+    }
+    
+    public Map<String,Object> validateQueryEntrustAllByDay(){
+        Map<String,Object> map = new HashMap<>();
+        List<EntrustDto> list = queryEntrustInfo.queryEntrustInfoAllByDay();
+        if (list == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("data", list);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+        }
+        return map;
+    }
+    
+    public Map<String,Object> validateQueryEntrustAllPaging(Integer pageSize,Integer lineSize){
+        Map<String,Object> map = new HashMap<>();
+        List<EntrustDto> list = queryEntrustInfo.queryEntrustInfoAllPaging(pageSize,lineSize);
+        if (list == null) {
+            map.put("code", ResponseCode.FAIL);
+            map.put("desc", ResponseCode.FAIL_DESC);
+        } else {
+            map.put("data", list);
+            map.put("code", ResponseCode.SUCCESS);
+            map.put("desc", ResponseCode.SUCCESS_DESC);
+        }
+        return map;
+    }
+
+}
